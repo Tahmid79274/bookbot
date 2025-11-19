@@ -22,9 +22,6 @@ def get_letter_counts(path):
             track_letters[words[letter]] = 1
     return track_letters
 
-def sort_on(items):
-    return items["num"]
-
 def get_sorted_report(letter_counts,path):
     dictionary_list = []
     print("============ BOOKBOT ============\n----------- Word Count ----------")
@@ -43,3 +40,32 @@ def get_sorted_report(letter_counts,path):
         if dictionary["char"].isalpha():
             print(f"{dictionary["char"]}: {dictionary["num"]}")
     print("============= END ===============")
+
+
+
+def num_words(content):
+    return len(content.split())
+
+def letter_count_dic(content):
+    record = dict()
+    for letter in content:
+        if letter in record.keys():
+             record[letter] += 1
+        else:
+            record[letter] = 1
+    return record
+
+def sorted_report(dictionary):
+    sorted_record = []
+    for key in dictionary.keys():
+        sorted_record.append(
+            {
+                "char" : key,
+                "num" : dictionary[key]
+            }
+        )
+    sorted_record.sort(reverse=True,key=sorts_on)
+    return sorted_record
+
+def sorts_on(items):
+    return items["num"]
