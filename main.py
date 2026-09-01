@@ -14,7 +14,7 @@
 # main()
 
 import sys
-from stats import num_words, letter_count_dic,sorted_report
+from stats import num_words, letter_count_dic,sorted_report, chars_dict_to_sorted_list
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -39,12 +39,14 @@ def main():
     content = get_book_text(sys.argv[1])
     print(f"Found {num_words(content)} total words")
     letter_count = letter_count_dic(content.lower())
+    words_sorted_list = chars_dict_to_sorted_list(letter_count)
+    print(f"Sorted Chars {words_sorted_list} total words")
     sorted_list = sorted_report(letter_count)
     
     print("--------- Character Count -------")
     for item in sorted_list:
         if item["char"].isalpha():
-            print(f"{item["char"]}: {item["num"]}")
+            print(f"{item['char']}: {item['num']}")
     print("============= END ===============")
 # get_book_text
 main()

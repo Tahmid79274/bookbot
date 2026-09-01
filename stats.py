@@ -1,4 +1,14 @@
 
+def sort_on(item: tuple[str, int]) -> int:
+    return item[0]
+
+def chars_dict_to_sorted_list(dictionary: dict[str, int]) -> list[tuple[str, int]]:
+    new_list = []
+    print(f'Dictionary:{dictionary}')
+    for key in dictionary:
+        print(f"{str(key)} = {dictionary[key]}")
+        new_list.append((dictionary[key],(str(key))))
+    return sorted(new_list, reverse=True,key=sort_on)
 
 def get_book_text(filePath):
     with open(filePath) as f:
@@ -37,8 +47,8 @@ def get_sorted_report(letter_counts,path):
     # print("=========================================")
     # print(dictionary_list)
     for dictionary in dictionary_list:
-        if dictionary["char"].isalpha():
-            print(f"{dictionary["char"]}: {dictionary["num"]}")
+        if dictionary['char'].isalpha():
+            print(f"{dictionary['char']}: {dictionary['num']}")
     print("============= END ===============")
 
 
